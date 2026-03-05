@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cognotiv FREE WiFi</title>
+
+<style>
+body {
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background: #f4f6f9;
+    text-align: center;
+    color: #2c3e50;
+}
+
+.wrapper {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 30px 20px 100px 20px;
+}
+
+.logo {
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+#mainBanner {
+    width: 100%;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    opacity: 0;
+    transition: opacity 0.8s ease-in-out;
+}
+
+/* Style cho nút Truy cập Internet mới */
+.access-button {
+    display: none; /* Ẩn lúc đầu */
+    margin-top: 25px;
+    padding: 16px 35px;
+    background: #0052cc;
+    color: white;
+    font-size: 18px;
+    font-weight: 600;
+    border-radius: 30px;
+    text-decoration: none;
+    box-shadow: 0 6px 15px rgba(0, 82, 204, 0.3);
+    transition: all 0.2s ease;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    max-width: 280px;
+}
+
+.access-button:hover {
+    transform: scale(1.05);
+    background: #0044aa;
+}
+
+.status-text {
+    margin-top: 25px;
+    font-size: 17px;
+    font-weight: 500;
+    color: #0052cc;
+}
+
+.progress-container {
+    width: 100%;
+    height: 8px;
+    background: #dfe6ed;
+    border-radius: 20px;
+    margin-top: 15px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    height: 100%;
+    width: 0%;
+    background: #0052cc;
+    border-radius: 20px;
+    transition: width 0.1s linear;
+}
+
+.footer {
+    margin-top: 30px;
+    font-size: 13px;
+    color: #8a98a8;
+}
+</style>
+</head>
+
+<body>
+
+<div class="wrapper">
+
+<div class="logo">Hệ thống WiFi miễn phí</div>
+
+<img id="mainBanner" src="wifibanner2.jpg" alt="Banner WiFi">
+
+<div id="statusText" class="status-text">
+    Đang cấp quyền truy cập...
+</div>
+
+<div class="progress-container" id="progressWrapper">
+    <div id="progressBar" class="progress-bar"></div>
+</div>
+
+<!-- NÚT TRUY CẬP INTERNET (Sẽ hiện ra sau khi load xong) -->
+<button id="btnInternet" class="access-button">
+    TRUY CẬP INTERNET
+</button>
+
+<form method="GET" id="authenticatedFrm" action="$authaction">
+    <input type="hidden" name="tok" value="$tok">
+    <input type="hidden" id="redirInput" name="redir" value="">
+</form>
+
+<div class="footer">
+   Cung cấp bởi Cognotiv Việt Nam
+</div>
+
+</div>
+
+<script>
+
+// ===== ROUTER ID =====
+var routerID = "HN01";
+
+// ===== QUẢN LÝ BANNER =====
+var ads =[
+    { image: "wifibanner1.jpg", url: "https://thpt.thitrenmaytinh.edu.vn/thi-thu-thpt", name: "banner1" },
+    { image: "wifibanner2.jpg", url: "https://www.mahoataisan.com/", name: "banner2" },
+    { image: "wifibanner3.jpg", url: "https://huongnghiep.cat.edu.vn/", name: "banner3" },
+    { image: "wifibanner4.jpg", url: "https://www.cat.edu.vn/", name: "banner4" },
+    { image: "wifibanner5.jpg", url: "https://www.v-sat.edu.vn/", name: "banner5" }
+];
+
+var index = localStorage.getItem("wifiAdIndex");
+index = (index === null) ? 0 : (parseInt(index) + 1) % ads.length;
+localStorage.setItem("wifiAdIndex", index);
+
+var selected = ads[index];
+var banner = document.getElementById("mainBanner");
+banner.src = selected.image;
+setTimeout(function() { banner.style.opacity = 1; }, 100);
+
+// ===== TẠO LINK REDIRECT =====
+var separator = selected.url.includes("?") ? "&" : "?";
+var finalUrl = selected.url + separator +
+    "utm_source=wifi&utm_medium=captive_portal" +
+    "&utm_campaign=" + routerID +
+    "&utm_content=" + selected.name;
+
+document.getElementById("redirInput").value = finalUrl;
+
+// ===== XỬ LÝ PROGRESS BAR & HIỆN NÚT =====
+var duration = 7000; // 7 giây
+var startTime = Date.now();
+var bar = document.getElementById("progressBar");
+var btnInternet = document.getElementById("btnInternet");
+var statusText = document.getElementById("statusText");
+var progressWrapper = document.getElementById("progressWrapper");
+
+var timer = setInterval(function() {
+    var elapsed = Date.now() - startTime;
+    var percent = (elapsed / duration) * 100;
+
+    if (percent >= 100) {
+        percent = 100;
+        clearInterval(timer);
+        
+        // 1. Ẩn thanh progress và đổi text
+        progressWrapper.style.display = "none";
+        statusText.innerText = "Kết nối đã sẵn sàng!";
+        statusText.style.color = "#28a745"; // Đổi sang màu xanh lá
+
+        // 2. Hiện nút Truy cập Internet
+        btnInternet.style.display = "inline-block";
+    }
+
+    bar.style.width = percent + "%";
+}, 30);
+
+// ===== SỰ KIỆN KHI NHẤN NÚT TRUY CẬP =====
+btnInternet.onclick = function() {
+    this.innerText = "Đang kết nối...";
+    this.style.opacity = "0.7";
+    document.getElementById("authenticatedFrm").submit();
+};
+
+</script>
+
+</body>
+</html>
