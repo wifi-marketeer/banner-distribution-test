@@ -1,4 +1,12 @@
 var ads = [
-  { image: "images/wifibanner1.jpg", url: "https://www.cat.edu.vn/", name: "banner1" },
-  { image: "images/wifibanner3.jpg", url: "https://huongnghiep.cat.edu.vn/", name: "banner3" }
+  {
+    image: "images/viec3mien.jpg",
+    url: "https://viec3mien.vn",
+    name: "banner1",
+  },
+  {
+    image: "images/wifibanner3.jpg",
+    url: "https://huongnghiep.cat.edu.vn/",
+    name: "banner3",
+  },
 ];

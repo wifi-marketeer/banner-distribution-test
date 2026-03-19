@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Cognotiv FREE WiFi</title>
+    <link rel="stylesheet" href="splash.css" />
+  </head>
+
+  <body>
+    <div class="wrapper">
+      <div class="logo">Hệ thống WiFi miễn phí</div>
+
+      <img id="mainBanner" src="" alt="Banner WiFi" />
+
+      <a href="tel:0906269986" class="phone-button" target="_blank">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="20"
+          height="20"
+          viewBox="0 0 24 24"
+          fill="currentColor"
+        >
+          <path
+            d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"
+          />
+        </svg>
+        Liên hệ
+      </a>
+
+      <div id="statusText" class="status-text">Đang cấp quyền truy cập...</div>
+
+      <div class="progress-container" id="progressWrapper">
+        <div id="progressBar" class="progress-bar"></div>
+      </div>
+
+      <button id="btnInternet" class="access-button">TRUY CẬP INTERNET</button>
+
+      <form method="GET" id="authenticatedFrm" action="$authaction">
+        <input type="hidden" name="tok" value="$tok" />
+        <input type="hidden" id="redirInput" name="redir" value="" />
+      </form>
+
+      <div class="footer">Cung cấp bởi Cognotiv Việt Nam</div>
+    </div>
+
+    <script src="router_config.js"></script>
+    <script src="ads_data.js"></script>
+    <script src="splash.js"></script>
+  </body>
+</html>

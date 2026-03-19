@@ -1,6 +1,9 @@
-1
+2
 [files]
 ads_data.js
+splash.css
+splash.html
+splash.js
 [banners]
-images/wifibanner1.jpg|https://www.cat.edu.vn/
+images/viec3mien.jpg|https://viec3mien.vn
 images/wifibanner3.jpg|https://huongnghiep.cat.edu.vn/

@@ -1,0 +1,102 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background: #f4f6f9;
+    text-align: center;
+    color: #2c3e50;
+}
+
+.wrapper {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 30px 20px 100px 20px;
+}
+
+.logo {
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+#mainBanner {
+    width: 100%;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    opacity: 0;
+    transition: opacity 0.8s ease-in-out;
+}
+
+.access-button {
+    display: none;
+    margin-top: 25px;
+    padding: 16px 35px;
+    background: #0052cc;
+    color: white;
+    font-size: 18px;
+    font-weight: 600;
+    border-radius: 30px;
+    text-decoration: none;
+    box-shadow: 0 6px 15px rgba(0, 82, 204, 0.3);
+    transition: all 0.2s ease;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    max-width: 280px;
+}
+
+.access-button:hover {
+    transform: scale(1.05);
+    background: #0044aa;
+}
+
+.status-text {
+    margin-top: 25px;
+    font-size: 17px;
+    font-weight: 500;
+    color: #0052cc;
+}
+
+.progress-container {
+    width: 100%;
+    height: 8px;
+    background: #dfe6ed;
+    border-radius: 20px;
+    margin-top: 15px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    height: 100%;
+    width: 0%;
+    background: #0052cc;
+    border-radius: 20px;
+    transition: width 0.1s linear;
+}
+
+.phone-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 15px;
+    padding: 12px 24px;
+    background: #28a745;
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 25px;
+    text-decoration: none;
+    box-shadow: 0 4px 12px rgba(40, 167, 69, 0.3);
+    transition: all 0.2s ease;
+}
+
+.phone-button:hover {
+    transform: scale(1.05);
+    background: #218838;
+}
+
+.footer {
+    margin-top: 30px;
+    font-size: 13px;
+    color: #8a98a8;
+}
