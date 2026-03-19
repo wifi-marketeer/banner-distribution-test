@@ -1,7 +1,0 @@
-{
-  "version": 2,
-  "banners": [
-    { "file": "wifibanner1.jpg", "url": "https://www.cat.edu.vn/", "name": "banner1" },
-    { "file": "wifibanner3.jpg", "url": "https://huongnghiep.cat.edu.vn/", "name": "banner3" }
-  ]
-}
