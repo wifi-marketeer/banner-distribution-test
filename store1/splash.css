@@ -74,25 +74,46 @@ body {
     transition: width 0.1s linear;
 }
 
-.phone-button {
+.contact-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 15px;
+    flex-wrap: wrap;
+}
+
+.phone-button,
+.email-button {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    margin-top: 15px;
     padding: 12px 24px;
-    background: #28a745;
     color: white;
     font-size: 16px;
     font-weight: 600;
     border-radius: 25px;
     text-decoration: none;
-    box-shadow: 0 4px 12px rgba(40, 167, 69, 0.3);
     transition: all 0.2s ease;
+}
+
+.phone-button {
+    background: #28a745;
+    box-shadow: 0 4px 12px rgba(40, 167, 69, 0.3);
 }
 
 .phone-button:hover {
     transform: scale(1.05);
     background: #218838;
+}
+
+.email-button {
+    background: #0052cc;
+    box-shadow: 0 4px 12px rgba(0, 82, 204, 0.3);
+}
+
+.email-button:hover {
+    transform: scale(1.05);
+    background: #0044aa;
 }
 
 .footer {
