@@ -1,5 +1,6 @@
-3
+4
 [files]
+ 
 [banners]
-images/photo-1.jpg|https://viec3mien.vn
-images/photo-2.jpg|https://huongnghiep.cat.edu.vn/
+images/wifibanner1.jpg|https://viec3mien.vn
+images/wifibanner2.jpg|https://viec3mien.vn
