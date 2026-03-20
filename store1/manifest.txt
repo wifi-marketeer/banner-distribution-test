@@ -1,9 +1,5 @@
-2
+3
 [files]
-ads_data.js
-splash.css
-splash.html
-splash.js
 [banners]
-images/viec3mien.jpg|https://viec3mien.vn
-images/wifibanner3.jpg|https://huongnghiep.cat.edu.vn/
+images/photo-1.jpg|https://viec3mien.vn
+images/photo-2.jpg|https://huongnghiep.cat.edu.vn/
