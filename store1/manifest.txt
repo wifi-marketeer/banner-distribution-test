@@ -1,6 +1,6 @@
-4
+5
 [files]
- 
+ads_data.js
 [banners]
-images/wifibanner1.jpg|https://viec3mien.vn
-images/wifibanner2.jpg|https://viec3mien.vn
+images/photo-1.jpg|https://viec3mien.vn
+images/photo-2.jpg|https://viec3mien.vn
