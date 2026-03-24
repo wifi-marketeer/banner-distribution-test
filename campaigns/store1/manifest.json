@@ -1,5 +1,5 @@
 {
-  "version": "1.0",
+  "version": "1.1",
   "files": [
     { "path": "splash.html", "url": "ads/splash.html" },
     { "path": "splash.css", "url": "ads/splash.css" },
