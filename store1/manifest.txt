@@ -1,8 +1,4 @@
-9
+10
 [files]
-ads_data.js
-splash.css
 splash.html
 [banners]
-images/viec3mien.jpg|https://viec3mien.vn
-images/viec3mien2.png|https://viec3mien.vn

@@ -1,0 +1,13 @@
+{
+  "version": "1.0",
+  "files": [
+    {
+      "path": "splash.html",
+      "url": "campaigns/default/ads/splash.html"
+    },
+    {
+      "path": "images/test_ad.jpg",
+      "url": "campaigns/default/ads/images/test_ad.jpg"
+    }
+  ]
+}
