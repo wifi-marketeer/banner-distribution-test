@@ -8,8 +8,8 @@ function getQueryParam(param) {
 
 // 2. Track interaction by sending POST to the local router CGI
 function trackInteraction(action, adId) {
-    var mac = getQueryParam("clientmac") || getQueryParam("mac");
-    if (!mac) return Promise.resolve(); // Can't track without MAC
+    var mac = window.CLIENT_MAC || getQueryParam("clientmac") || getQueryParam("mac");
+    if (!mac || mac === "$clientmac") return Promise.resolve(); // Can't track without MAC
 
     // NoDogSplash serves the splash page on port 2050 (typically).
     // The CGI script is served by OpenWrt's main web server (uhttpd) on port 80.
