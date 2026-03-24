@@ -1,4 +1,0 @@
-10
-[files]
-splash.html
-[banners]
