@@ -1,13 +1,39 @@
 {
-  "version": "3.0",
+  "version": "4.0",
   "files": [
-    { "path": "splash.html", "url": "ads/splash.html" },
-    { "path": "splash.css", "url": "ads/splash.css" },
-    { "path": "splash.js", "url": "ads/splash.js" },
-    { "path": "form.html", "url": "ads/form.html" },
-    { "path": "images/1.jpg", "url": "ads/images/1.jpg" },
-    { "path": "images/2.jpg", "url": "ads/images/2.jpg" },
-    { "path": "images/3.jpg", "url": "ads/images/3.jpg" },
-    { "path": "images/form_banner.jpg", "url": "ads/images/form_banner.jpg" }
+    { "dest": "splash.html", "src": "ads/splash.html" },
+    { "dest": "splash.css", "src": "ads/splash.css" },
+    { "dest": "splash.js", "src": "ads/splash.js" },
+    { "dest": "form.html", "src": "ads/form.html" },
+    { "dest": "images/form_banner.jpg", "src": "ads/images/form_banner.jpg" }
+  ],
+  "banners": [
+    {
+      "dest": "images/1.jpg",
+      "src": "ads/images/1.jpg",
+      "contact": {
+        "website": "https://example.com/promo1",
+        "phone": "0812.533.533",
+        "email": "info@gtvn.com.vn"
+      }
+    },
+    {
+      "dest": "images/2.jpg",
+      "src": "ads/images/2.jpg",
+      "contact": {
+        "website": "https://example.com/promo2",
+        "phone": "0999.999.999",
+        "email": "sales@gtvn.com.vn"
+      }
+    },
+    {
+      "dest": "images/3.jpg",
+      "src": "ads/images/3.jpg",
+      "contact": {
+        "website": "https://example.com/promo3",
+        "phone": "0888.888.888",
+        "email": "contact@gtvn.com.vn"
+      }
+    }
   ]
 }

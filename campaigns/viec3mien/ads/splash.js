@@ -40,42 +40,57 @@ fetch('manifest.json')
     .then(function(res) { return res.json(); })
     .then(function(manifest) {
         // Find ad images
-        var adFiles = manifest.files.filter(function(f) { return f.path.indexOf('images/') === 0; });
+        var adFiles = manifest.banners || [];
         if (adFiles.length === 0) return;
 
         // Pick random ad
         var selected = adFiles[Math.floor(Math.random() * adFiles.length)];
+        var contact = selected.contact || {};
 
         // Set image and reveal
         banner.onload = function() { banner.style.opacity = 1; };
-        banner.src = selected.path;
+        banner.src = selected.dest;
 
-        // --- Interaction Tracking ---
+        // --- Setup Buttons & Interaction Tracking ---
 
         // 1. Banner click (just tracking, usually relies on user manually switching apps)
         banner.onclick = function() {
-            trackInteraction('click_banner', selected.path);
+            trackInteraction('click_banner', selected.dest);
         };
 
-        // 2. Call button click
+        // 2. Call button setup
         if (btnCall) {
-            btnCall.onclick = function() {
-                trackInteraction('click_call', selected.path);
-            };
+            if (contact.phone) {
+                btnCall.href = "tel:" + contact.phone;
+                btnCall.onclick = function() { trackInteraction('click_call', selected.dest); };
+            } else {
+                btnCall.style.display = "none";
+            }
         }
 
-        // 3. Email button click
+        // 3. Email button setup
         if (btnEmail) {
-            btnEmail.onclick = function() {
-                trackInteraction('click_email', selected.path);
-            };
+            if (contact.email) {
+                btnEmail.href = "mailto:" + contact.email;
+                btnEmail.onclick = function() { trackInteraction('click_email', selected.dest); };
+            } else {
+                btnEmail.style.display = "none";
+            }
         }
 
         // 4. Internet button tracking (skip to internet)
         btnInternet.onclick = function() {
             this.innerText = "Đang kết nối...";
             this.style.opacity = "0.7";
-            trackInteraction('skip', selected.path).then(function() {
+
+            // Set the redirect URL in the hidden form input
+            var targetUrl = contact.website || "https://google.com";
+            document.getElementById("redirInput").value = targetUrl;
+
+            trackInteraction('skip', selected.dest).then(function() {
+                // Submit the form in the SAME window to ensure the browser 
+                // processes the redirect after authentication.
+                document.getElementById("authenticatedFrm").target = "_self";
                 document.getElementById("authenticatedFrm").submit();
             });
         };
