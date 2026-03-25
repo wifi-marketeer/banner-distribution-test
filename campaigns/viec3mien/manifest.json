@@ -1,11 +1,9 @@
 {
-  "version": "4.4",
+  "version": "4.5",
   "files": [
     { "dest": "splash.html", "src": "splash.html" },
     { "dest": "splash.css", "src": "splash.css" },
-    { "dest": "splash.js", "src": "splash.js" },
-    { "dest": "form.html", "src": "form.html" },
-    { "dest": "images/form_banner.png", "src": "images/form_banner.png" }
+    { "dest": "splash.js", "src": "splash.js" }
   ],
   "banners": [
     {
