@@ -10,58 +10,44 @@ var progressWrapper = document.getElementById("progressWrapper");
 var redirInput = document.getElementById("redirInput");
 var authForm = document.getElementById("authenticatedFrm");
 
-// 1. Fetch local manifest and initialize
+// Function to initialize UI with selected ad
+function initPortal(manifest) {
+    var adFiles = manifest.banners || [];
+    if (adFiles.length === 0) return;
+
+    var selected = adFiles[Math.floor(Math.random() * adFiles.length)];
+    var contact = selected.contact || {};
+
+    // 1. Set banner
+    banner.onload = function() { banner.style.opacity = 1; };
+    banner.src = selected.dest;
+
+    // 2. Set redirect URL immediately
+    var targetUrl = contact.website || "https://google.com";
+    redirInput.value = targetUrl;
+
+    // 3. Setup Call/Email buttons
+    if (btnCall) {
+        if (contact.phone) btnCall.href = "tel:" + contact.phone;
+        else btnCall.style.display = "none";
+    }
+    if (btnEmail) {
+        if (contact.email) btnEmail.href = "mailto:" + contact.email;
+        else btnEmail.style.display = "none";
+    }
+}
+
+// Start fetching manifest immediately
 fetch('manifest.json')
     .then(function(res) { return res.json(); })
     .then(function(manifest) {
-        // Find ad images
-        var adFiles = manifest.banners || [];
-        if (adFiles.length === 0) return;
-
-        // Pick random ad
-        var selected = adFiles[Math.floor(Math.random() * adFiles.length)];
-        var contact = selected.contact || {};
-
-        // Set image and reveal
-        banner.onload = function() { banner.style.opacity = 1; };
-        banner.src = selected.dest;
-
-        // Set the redirect URL immediately (seamless)
-        var targetUrl = contact.website || "https://google.com";
-        redirInput.value = targetUrl;
-
-        // Setup Call button
-        if (btnCall) {
-            if (contact.phone) {
-                btnCall.href = "tel:" + contact.phone;
-            } else {
-                btnCall.style.display = "none";
-            }
-        }
-
-        // Setup Email button
-        if (btnEmail) {
-            if (contact.email) {
-                btnEmail.href = "mailto:" + contact.email;
-            } else {
-                btnEmail.style.display = "none";
-            }
-        }
-
-        // Internet button click simply submits the form
-        btnInternet.onclick = function() {
-            this.innerText = "Đang kết nối...";
-            this.style.opacity = "0.7";
-            authForm.submit();
-        };
+        initPortal(manifest);
     })
     .catch(function(err) {
         console.error("Failed to load manifest:", err);
-        // Fallback: allow internet access anyway
-        btnInternet.onclick = function() { authForm.submit(); };
     });
 
-// 2. Progress bar timer
+// Timer and Progress Bar
 var DURATION = 7000;
 var startTime = Date.now();
 
@@ -77,3 +63,10 @@ var timer = setInterval(function() {
         btnInternet.style.display = "inline-block";
     }
 }, 30);
+
+// Internet button click (always available as fallback even if fetch fails)
+btnInternet.onclick = function() {
+    this.innerText = "Đang kết nối...";
+    this.style.opacity = "0.7";
+    authForm.submit();
+};
