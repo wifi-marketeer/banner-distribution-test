@@ -14,7 +14,8 @@ function trackInteraction(action, adId) {
     // NoDogSplash serves the splash page on port 2050 (typically).
     // The CGI script is served by OpenWrt's main web server (uhttpd) on port 80.
     // We use window.location.hostname to dynamically get the router's IP (e.g. 192.168.1.1).
-    var cgiUrl = "http://" + window.location.hostname + "/cgi-bin/portal";
+    // Use port 2049 to avoid Nodogsplash port 80 interception.
+    var cgiUrl = "http://" + window.location.hostname + ":2049/cgi-bin/portal";
 
     return fetch(cgiUrl, {
         method: 'POST',
