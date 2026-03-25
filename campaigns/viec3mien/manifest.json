@@ -1,16 +1,16 @@
 {
-  "version": "4.0",
+  "version": "4.1",
   "files": [
     { "dest": "splash.html", "src": "ads/splash.html" },
     { "dest": "splash.css", "src": "ads/splash.css" },
     { "dest": "splash.js", "src": "ads/splash.js" },
     { "dest": "form.html", "src": "ads/form.html" },
-    { "dest": "images/form_banner.jpg", "src": "ads/images/form_banner.jpg" }
+    { "dest": "images/form_banner.png", "src": "ads/images/form_banner.png" }
   ],
   "banners": [
     {
-      "dest": "images/1.jpg",
-      "src": "ads/images/1.jpg",
+      "dest": "images/1.png",
+      "src": "ads/images/1.png",
       "contact": {
         "website": "https://example.com/promo1",
         "phone": "0812.533.533",
@@ -18,8 +18,8 @@
       }
     },
     {
-      "dest": "images/2.jpg",
-      "src": "ads/images/2.jpg",
+      "dest": "images/2.png",
+      "src": "ads/images/2.png",
       "contact": {
         "website": "https://example.com/promo2",
         "phone": "0999.999.999",
@@ -27,8 +27,8 @@
       }
     },
     {
-      "dest": "images/3.jpg",
-      "src": "ads/images/3.jpg",
+      "dest": "images/3.png",
+      "src": "ads/images/3.png",
       "contact": {
         "website": "https://example.com/promo3",
         "phone": "0888.888.888",
